@@ -3,11 +3,12 @@ import Header from "./Header";
 import Footer from "./Footer";
 // import NoteRender from "./NoteRender";
 import CreateArea from "./CreateArea";
-import axios from "axios";
+// import axios from "axios";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DeletedNotes from "./DeletedNotes";
 import Notes from "./Notes";
 import ArchivedNotes from "./ArchivedNotes";
+import axios from "./axios";
 
 function App() {
   const [notes, setNotes] = useState([]);
