@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
 
-  baseURL: "myurl.com"
+  baseURL: "https://yournote-s.onrender.com"
 });
 
 export default instance;
