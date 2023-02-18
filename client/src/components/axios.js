@@ -1,8 +1,15 @@
+// import axios from "axios";
+//
+// const instance = axios.create({
+//
+//   baseURL: "https://yournote-s.onrender.com"
+// });
+//
+// export default instance;
 import axios from "axios";
 
-const instance = axios.create({
-
-  baseURL: "https://yournote-s.onrender.com"
+const api = axios.create({
+ baseURL: process.env.REACT_APP_BASE_URL || "http://localhost:4000",
 });
 
-export default instance;
+export default api;

@@ -7,13 +7,14 @@ import RestoreIcon from "@material-ui/icons/Restore";
 import ArchiveIcon from '@material-ui/icons/Archive';
 import UnarchiveIcon from '@material-ui/icons/Unarchive';
 import axios from "axios";
+import api from "./axios";
 
 function NoteRender(props) {
   const [style, setStyle] = useState({visibility: 'hidden'});
 
     async function deleteNote(id) {
       id=props.id;
-      await axios.post('/deleteNote', id)
+      await api.post('/deleteNote', id)
       .then(response => {
          props.onDelete();
          console.log("Deletion Successful");
@@ -28,7 +29,7 @@ function NoteRender(props) {
   async function handleRecover(id) {
     console.log("handleRecover");
     id=props.id;
-      await axios.post('/unarchive', id)
+      await api.post('/unarchive', id)
       .then(response => {
          props.onRecovery();
          console.log("Bin recovery Successful");
@@ -40,7 +41,7 @@ function NoteRender(props) {
   async function handleArchive(id) {
     console.log("Deletion Successful");
     id=props.id;
-      await axios.post('/archive', id)
+      await api.post('/archive', id)
       .then(response => {
          props.onArchive();
          console.log("Archival Successful");
@@ -52,7 +53,7 @@ function NoteRender(props) {
   async function handleUnArchive(id) {
     console.log("handleArchive");
     id=props.id;
-      await axios.post('/unarchive', id)
+      await api.post('/unarchive', id)
       .then(response => {
          props.onDelete();
          console.log("Unarchival Successful");
@@ -63,7 +64,7 @@ function NoteRender(props) {
   }
    function permaDelete(id) {
     id=props.id;
-     axios.post('/permaDeleteNote', id)
+     api.post('/permaDeleteNote', id)
     .then(response => {
         props.onPermaDelete();
         console.log("Permanent Deletion Successful");

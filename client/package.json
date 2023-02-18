@@ -4,6 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
+  "proxy": "https://yournote-s.onrender.com",
   "dependencies": {
     "@material-ui/core": "4.6.1",
     "@material-ui/icons": "^4.5.1",

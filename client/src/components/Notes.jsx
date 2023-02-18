@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import NoteRender from "./NoteRender";
+import api from "./axios";
 
 function Notes (props) {
     async function viewNotes () {
-        await axios.get('/view')
+        await api.get('/view')
         .then(res => {
           console.log(res.data);
           props.setNotes(res.data);
@@ -19,7 +20,7 @@ function Notes (props) {
   },[]);
       return (
         <>
-          {props.notes.map((noteItem, index) => {        
+          {props.notes.map((noteItem, index) => {
               return (
                 <NoteRender className="container-fluid"
                   key={index}

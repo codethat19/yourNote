@@ -3,12 +3,12 @@ import Header from "./Header";
 import Footer from "./Footer";
 // import NoteRender from "./NoteRender";
 import CreateArea from "./CreateArea";
-// import axios from "axios";
+ import axios from "axios";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DeletedNotes from "./DeletedNotes";
 import Notes from "./Notes";
 import ArchivedNotes from "./ArchivedNotes";
-import axios from "./axios";
+import api from "./axios";
 
 function App() {
   const [notes, setNotes] = useState([]);
@@ -19,7 +19,7 @@ function App() {
     // const flag = JSON.stringify( setFlag );
     //console.log();
     //setNoteFlag();
-    await axios.get('/view')
+    await api.get('/view')
     .then(res => {
       setNotes(res.data);
       //console.log(res.data);
@@ -47,7 +47,7 @@ function App() {
     if(note.title != "" && note.content != "") {
       const newNote = JSON.stringify( note );
       // console.log("----------------\n" + note);
-        await axios.post('/addNote', newNote)
+        await api.post('/addNote', newNote)
         .then(response => {
           viewNotes();
           // console.log("Addition Successful")
@@ -68,6 +68,14 @@ function App() {
     <>
     <Router>
     <Routes>
+    <Route path='*' element={
+      <>
+        <Header title={"yourNote"}/>
+        <CreateArea onAdd={addNote} />
+        <Notes notes={notes} setNotes={setNotes} />
+        {/* <Footer /> */}
+      </>
+    }/>
       <Route path='/view' element={
         <>
           <Header title={"yourNote"}/>
