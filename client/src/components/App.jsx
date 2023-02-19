@@ -1,9 +1,10 @@
+//jshint esversion:8
 import React, { useState, useEffect } from "react";
 import Header from "./Header";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 // import NoteRender from "./NoteRender";
 import CreateArea from "./CreateArea";
- import axios from "axios";
+import axios from "axios";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import DeletedNotes from "./DeletedNotes";
 import Notes from "./Notes";
@@ -12,8 +13,6 @@ import api from "./axios";
 
 function App() {
   const [notes, setNotes] = useState([]);
-  const [headerName, setHeaderName] = useState("yourNote");
-
 
   const viewNotes = async () => {
     // const flag = JSON.stringify( setFlag );
@@ -27,7 +26,7 @@ function App() {
     .catch( error => {
       console.log(error);
     });
-  }
+  };
 
   useEffect( () => {
     viewNotes();
@@ -43,15 +42,13 @@ function App() {
   //     });
   // }
   const addNote = async (note) => {
-    // console.log("----------------\n" + note);
-    if(note.title != "" && note.content != "") {
+
+    if(note.title !== "" && note.content !== "") {
+
       const newNote = JSON.stringify( note );
-      // console.log("----------------\n" + note);
         await api.post('/addNote', newNote)
         .then(response => {
           viewNotes();
-          // console.log("Addition Successful")
-          // console.log(newNote)
         })
         .catch( error => {
           console.log(error);
@@ -67,44 +64,44 @@ function App() {
 
     <>
     <Router>
-    <Routes>
-    <Route path='*' element={
-      <>
-        <Header title={"yourNote"}/>
-        <CreateArea onAdd={addNote} />
-        <Notes notes={notes} setNotes={setNotes} />
-        {/* <Footer /> */}
-      </>
-    }/>
-      <Route path='/view' element={
-        <>
-          <Header title={"yourNote"}/>
-          <CreateArea onAdd={addNote} />
-          <Notes notes={notes} setNotes={setNotes} />
-          {/* <Footer /> */}
-        </>
-      }/>
+      <Routes>
+        <Route path='/view' element={
+          <>
+            <Header title={"yourNote"}/>
+            <CreateArea onAdd={addNote} />
+            <Notes notes={notes} setNotes={setNotes} />
+            {/*<Footer />*/}
+          </>
+        }/>
 
-      <Route path='/deleted' element={
-        <>
-          <Header title={"Deleted Notes"}/>
-          <DeletedNotes notes={notes} setNotes={setNotes} />
-          {/* <Footer />          */}
-        </>
-      }/>
-      <Route path='/archived' element={
-        <>
-          <Header title={"Archived Notes"}/>
-          <ArchivedNotes notes={notes} setNotes={setNotes} />
-          {/* <Footer /> */}
-        </>
-      }/>
+        <Route path='/deleted' element={
+          <>
+            <Header title={"Deleted Notes"}/>
+            <DeletedNotes notes={notes} setNotes={setNotes} />
+            {/* <Footer />          */}
+            </>
+        }/>
+        <Route path='/archived' element={
+          <>
+            <Header title={"Archived Notes"}/>
+            <ArchivedNotes notes={notes} setNotes={setNotes} />
+            {/* <Footer /> */}
+          </>
+        }/>
+        <Route path='*' element={
+          <>
+            <Header title={"yourNote"}/>
+            <CreateArea onAdd={addNote} />
+            <Notes notes={notes} setNotes={setNotes} />
+            {/* <Footer /> */}
+          </>
+        }/>
       </Routes>
-      </Router>
+    </Router>
       {/* <Footer /> */}
     </>
 
-    );
+  );
 }
 
 export default App;

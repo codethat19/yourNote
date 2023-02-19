@@ -1,5 +1,6 @@
+//jshint esversion:8
 import React, { useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
 import NoteRender from "./NoteRender";
 import api from "./axios";
 
@@ -7,7 +8,7 @@ function DeletedNotes (props) {
   async function viewDeletedNotes () {
     await api.get('/deletedNotes')
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         props.setNotes(res.data);
       })
       .catch( error => {

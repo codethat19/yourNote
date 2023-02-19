@@ -60,26 +60,27 @@ footer p {
 }
 .note {
   background: #FFD369;
-  border-radius: 7px;
+  border-radius: 10px;
   box-shadow: 0 1px 2px #FFD369;
   padding: 10px 10px 15px 10px;
-  width: auto;
-  margin: 20px;
+  width: auto%;
+  margin: 15px 15px 0px 0px;
   /* padding: 1%; */
-  /* margin: 1%; */
+  /* margin: 5%; */
   float: left;
+  /* position: fixed; */
 }
 .note:hover {
   transform: translateY(-4px);
-  transition: 0.2s;
+  transition: 1s;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .note h1 {
-  font-size: 1.2em;
+  font-size: 1.3em;
   margin-bottom: 6px;
 }
 .note p {
-  font-size: 1.1em;
+  font-size: 1em;
   margin-bottom: 10px;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -170,5 +171,5 @@ form.create-note button {
   color: #EEEEEE;
   cursor: pointer;
   opacity: 1;
-  transition: 0.3s;
+  transition: 0.5s;
 }

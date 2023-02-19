@@ -1,7 +1,8 @@
+//jshint esversion: 8
 import React, {useState} from "react";
 // import HighlightIcon from "@material-ui/icons/Highlight";
 // import RestoreFromTrashIcon from "@material-ui/icons/RestoreFromTrash";
-import DescriptionIcon from "@material-ui/icons/Description";
+// import DescriptionIcon from "@material-ui/icons/Description";
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
@@ -39,7 +40,7 @@ function Header(props) {
       <h1>
 
         <FaIcons.FaBars onClick={showSidebar} style={{cursor:'pointer'}}/>  &nbsp;&nbsp;
-        {/* <DescriptionIcon style={{transform: "scale(1.5)"}}/>*/} <Link to='/view'>{(props.title)}</Link> 
+        {/* <DescriptionIcon style={{transform: "scale(1.5)"}}/>*/} <Link to='/view'>{(props.title)}</Link>
         {/* <Link to='/deleted'><RestoreFromTrashIcon onClick={handleClick}/></Link> */}
 
       </h1>
