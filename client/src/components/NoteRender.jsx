@@ -1,60 +1,61 @@
-//jshint esversion: 8
+
+//jshint esversion: 6
 import React, { useState } from "react";
 import DeleteIcon  from "@material-ui/icons/Delete";
+// import EditIcon from "@material-ui/icons/Edit";
 import RestoreIcon from "@material-ui/icons/Restore";
 import ArchiveIcon from '@material-ui/icons/Archive';
 import UnarchiveIcon from '@material-ui/icons/Unarchive';
-// import axios from "axios";
-import api from "./axios";
+import axios from "axios";
 
 function NoteRender(props) {
   const [style, setStyle] = useState({visibility: 'hidden'});
 
     async function deleteNote(id) {
       id=props.id;
-      await api.post('/deleteNote', id)
+      await axios.post('/deleteNote', id)
       .then(response => {
          props.onDelete();
-         // console.log("Deletion Successful");
+         console.log("Deletion Successful");
       })
       .catch( error => {
         console.log(error);
       });
-    }
+    };
   // function handleEdit() {
   //   console.log("handleEdit");
   // }
   async function handleRecover(id) {
-    // console.log("handleRecover");
+    console.log("handleRecover");
     id=props.id;
-      await api.post('/unarchive', id)
+      await axios.post('/unarchive', id)
       .then(response => {
          props.onRecovery();
-         // console.log("Bin recovery Successful");
+         console.log("Bin recovery Successful");
       })
       .catch( error => {
         console.log(error);
       });
   }
   async function handleArchive(id) {
-    // console.log("Deletion Successful");
+    console.log("Deletion Successful");
     id=props.id;
-      await api.post('/archive', id)
+      await axios.post('/archive', id)
       .then(response => {
          props.onArchive();
-         // console.log("Archival Successful");
+         console.log("Archival Successful");
       })
       .catch( error => {
         console.log(error);
       });
   }
   async function handleUnArchive(id) {
-    // console.log("handleArchive");
+    console.log("handleArchive");
     id=props.id;
-      await api.post('/unarchive', id)
+      await axios.post('/unarchive', id)
       .then(response => {
          props.onDelete();
-         // console.log("Unarchival Successful");
+         console.log("Unarchival Successful");
       })
       .catch( error => {
         console.log(error);
@@ -62,10 +63,10 @@ function NoteRender(props) {
   }
    function permaDelete(id) {
     id=props.id;
-     api.post('/permaDeleteNote', id)
+     axios.post('/permaDeleteNote', id)
     .then(response => {
         props.onPermaDelete();
-        // console.log("Permanent Deletion Successful");
+        console.log("Permanent Deletion Successful");
     })
     .catch( error => {
       console.log(error);
@@ -77,6 +78,7 @@ function NoteRender(props) {
   if (props.flag === 1) {
     element = <>
       <button  style={style} className="noteButton" onClick={deleteNote}><DeleteIcon /></button>
+      {/* <button style={style} onClick={handleEdit}><EditIcon /></button> */}
       <button  style={style} className="noteButton" onClick={handleArchive}><ArchiveIcon /></button>
       </>
   } else if (props.flag === 0) {
@@ -92,19 +94,19 @@ function NoteRender(props) {
   }
 
   return(
-    <div className="note"   onMouseEnter = { e => {
-      setStyle({visibility: 'visible'});
+        <div className="note"   onMouseEnter={e => {
+          setStyle({visibility: 'visible'});
       }}
       onMouseLeave={e => {
-        setStyle({visibility: 'hidden'})
+          setStyle({visibility: 'hidden'})
       }}
-    >
-      <div><h1>{props.title}</h1>
-        <p>{props.content}</p>
-        {element}
+      >
+          <div><h1>{props.title}</h1>
+          <p>{props.content}</p>
+          {element}
+          </div>
         </div>
-    </div>
-  );
-}
+      );
+    }
 
 export default NoteRender;

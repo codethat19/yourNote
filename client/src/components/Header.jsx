@@ -1,8 +1,7 @@
-//jshint esversion: 8
 import React, {useState} from "react";
 // import HighlightIcon from "@material-ui/icons/Highlight";
 // import RestoreFromTrashIcon from "@material-ui/icons/RestoreFromTrash";
-// import DescriptionIcon from "@material-ui/icons/Description";
+import DescriptionIcon from "@material-ui/icons/Description";
 import { Link } from 'react-router-dom';
 import * as FaIcons from 'react-icons/fa';
 import * as AiIcons from 'react-icons/ai';
@@ -12,8 +11,8 @@ import * as AiIcons from 'react-icons/ai';
 import { sidebarData } from "../sidebarData";
 import "../navbar.css";
 
-function Header(props) {
-
+function Header() {
+  
   // function handleClick(evt) {
   //   //viewDeletedNotes();
   //   const viewDeletedNotes = async (note) => {
@@ -27,7 +26,7 @@ function Header(props) {
   //       });
   //   // return (
   //   //   <DeletedNotes setNotes={props.setNotes} notes={props.notes}/>
-  //   // )
+  //   // )    
   //   }
   // }
   const [sidebar, setSidebar] = useState(false);
@@ -39,11 +38,11 @@ function Header(props) {
     <div className="header">
       <h1>
 
-        <FaIcons.FaBars onClick={showSidebar} style={{cursor:'pointer'}}/>  &nbsp;&nbsp;
-        {/* <DescriptionIcon style={{transform: "scale(1.5)"}}/>*/} <Link to='/view'>{(props.title)}</Link>
+        <FaIcons.FaBars onClick={showSidebar} style={{cursor:'pointer'}}/>  &nbsp;&nbsp;   
+        {/* <DescriptionIcon style={{transform: "scale(1.5)"}}/>*/} <Link to='/view'>Diary</Link> 
         {/* <Link to='/deleted'><RestoreFromTrashIcon onClick={handleClick}/></Link> */}
-
-      </h1>
+      
+      </h1>      
     </div>
     {/* <Navbar /> */}
     <nav className={sidebar ? 'nav-menu active' : 'nav-menu'}>
@@ -64,7 +63,7 @@ function Header(props) {
                 )
             })}
             </ul>
-        </nav>
+        </nav>       
     </>
   );
 }
