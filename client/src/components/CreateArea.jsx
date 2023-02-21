@@ -1,9 +1,10 @@
+//jshint esversion:9
 import React, { useState } from "react";
 import AddIcon from "@material-ui/icons/Add";
 import Fab from "@material-ui/core/Fab";
 import Zoom from "@material-ui/core/Zoom";
 // import "../../public/styles.css"
-import TextareaAutosize from 'react-textarea-autosize';
+// import TextareaAutosize from 'react-textarea-autosize';
 
 
 function CreateArea(props) {
@@ -23,6 +24,7 @@ function CreateArea(props) {
         [name]: value
       };
     });
+
   }
 
   function submitNote(event) {
@@ -41,36 +43,33 @@ function CreateArea(props) {
   return (
     <div>
       <form method = "post" className="create-note col-sm-2">
+
         {isExpanded && (
           <input
             name="title"
             onChange={handleChange}
             value={note.title}
-            placeholder="Title"
+            placeholder="Title (Required)"
+            required
           />
         )}
-        {/* <TextareaAutosize 
-          id="txt"
-          name="content"
-          onClick={expand}
-          onChange={handleChange}
-          value={note.content}
-          placeholder="Take a note..."
-        /> */}
 
          <textarea
           name="content"
           id="txt"
           onClick={expand}
           onChange={handleChange}
+          className="scroll"
           value={note.content}
-          placeholder="Take a note..."
+          placeholder="Click to create note.....(Required)"
           rows={isExpanded ? 3 : 1}
-        /> 
+          required
+        />
+
         <Zoom in={isExpanded}>
-          <Fab onClick={submitNote}><AddIcon style={{marginLeft: "-15px"}}/>
-          </Fab>
+          <Fab onClick={submitNote}><AddIcon style={{marginLeft: "-15px"}} /></Fab>
         </Zoom>
+
       </form>
     </div>
   );
